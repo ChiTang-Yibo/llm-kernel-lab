@@ -1,0 +1,26 @@
+
+{
+  "dtype": "float32",
+  "seed": 2026,
+  "atol": 0.0001,
+  "rtol": 0.0001,
+
+  "smoke": [
+    {"name": "tiny",        "M": 4,   "N": 4,   "K": 4},
+    {"name": "single",      "M": 1,   "N": 1,   "K": 1},
+    {"name": "small",       "M": 16,  "N": 16,  "K": 16},
+    {"name": "regular",     "M": 128, "N": 128, "K": 128},
+    {"name": "divisible",   "M": 256, "N": 256, "K": 256},
+    {"name": "irregular",   "M": 257, "N": 255, "K": 259},
+    {"name": "rectangular", "M": 128, "N": 256, "K": 64}
+  ],
+
+  "extended": [
+    {"name": "medium", "M": 1024, "N": 1024, "K": 1024},
+    {"name": "large",  "M": 2048, "N": 2048, "K": 2048},
+    {"name": "tall",   "M": 4096, "N": 128,  "K": 512},
+    {"name": "wide",   "M": 128,  "N": 4096, "K": 512},
+    {"name": "long_k", "M": 128,  "N": 128,  "K": 4096},
+    {"name": "skinny", "M": 1024, "N": 8,    "K": 4096}
+  ]
+}

@@ -1,0 +1,30 @@
+
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 28,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "release-sm120",
+      "displayName": "Release - RTX 5070 Laptop (SM120)",
+      "description": "CUDA 12.8, Ninja, Release, Blackwell SM120",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/release-sm120",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_CUDA_ARCHITECTURES": "120",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "release-sm120",
+      "configurePreset": "release-sm120",
+      "jobs": 8
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+
+# ============================================================
+# LLM Kernel Performance Lab
+# Git Ignore Rules
+# ============================================================
+
+# CMake / Ninja build outputs
+build/
+build-*/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+.ninja_deps
+.ninja_log
+
+# Compiled binaries
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.exe
+*.out
+
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Triton cache
+.triton/
+
+# Local configuration
+.env
+.env.*
+!.env.example
+
+# VS Code local settings
+.vscode/settings.json
+.vscode/launch.json
+
+# Nsight Compute raw reports
+*.ncu-rep
+*.ncu-rep-shm
+
+# Nsight Systems raw reports
+*.nsys-rep
+*.qdrep
+*.qdstrm
+*.sqlite
+*.sqlite-journal
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Generated correctness fixtures
+results/fixtures/
