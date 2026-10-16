@@ -1,0 +1,150 @@
+[22666] gemm_v00_benchmark@127.0.0.1
+  gemm_v00_kernel(const float *, const float *, float *, int, int, int) (16, 16, 1)x(16, 16, 1), Context 1, Stream 13, Device 0, CC 12.0
+    Section: Memory Workload Analysis
+    --------------------------------------- ----------- ------------
+    Metric Name                             Metric Unit Metric Value
+    --------------------------------------- ----------- ------------
+    Local Memory Spilling Requests                                 0
+    Local Memory Spilling Request Overhead            %            0
+    L2 Sector Promotion Misses                        %            0
+    Shared Memory Spilling Requests                                0
+    Shared Memory Spilling Request Overhead           %            0
+    Memory Throughput                           Gbyte/s         8.57
+    Mem Busy                                          %        49.76
+    Max Bandwidth                                     %        66.32
+    Instructions Executed                          inst      2676736
+    L1/TEX Hit Rate                                   %        89.12
+    L2 Persisting Size                            Mbyte         6.29
+    L2 Compression Success Rate                       %            0
+    L2 Compression Ratio                                           0
+    L2 Compression Input Sectors                 sector            0
+    L2 Hit Rate                                       %        67.81
+    L2 Sector Misses                             sector        20653
+    L2 Sector Misses from Promotion              sector            0
+    Mem Pipes Busy                                    %        66.32
+    --------------------------------------- ----------- ------------
+
+    Section: Scheduler Statistics
+    -------------------------------------- ----------- ------------
+    Metric Name                            Metric Unit Metric Value
+    -------------------------------------- ----------- ------------
+    One or More Eligible                             %        26.46
+    Issued Warp Per Scheduler                                  0.26
+    No Eligible                                      %        73.54
+    Theoretical Active Warps Per Scheduler        warp           12
+    Active Warps Per Scheduler                    warp        10.02
+    Eligible Warps Per Scheduler                  warp         0.81
+    -------------------------------------- ----------- ------------
+
+    Table Name : Warps Per Scheduler
+    ------------------------------- ----------- ------------
+    Metric Name                     Metric Unit Metric Value
+    ------------------------------- ----------- ------------
+    Issued Warp Per Scheduler                           0.26
+    Theoretical Warps Per Scheduler        warp           12
+    GPU Maximum Warps Per Scheduler        warp           12
+    Active Warps Per Scheduler             warp        10.02
+    Eligible Warps Per Scheduler           warp         0.81
+    ------------------------------- ----------- ------------
+
+    OPT   Est. Local Speedup: 73.54%
+          Every scheduler is capable of issuing one instruction per cycle, but for this workload each scheduler only
+          issues an instruction every 3.8 cycles. This might leave hardware resources underutilized and may lead to
+          less optimal performance. Out of the maximum of 12 warps per scheduler, this workload allocates an average
+          of 10.02 active warps per scheduler, but only an average of 0.81 warps were eligible per cycle. Eligible
+          warps are the subset of active warps that are ready to issue their next instruction. Every cycle with no
+          eligible warp results in no instruction being issued and the issue slot remains unused. To increase the
+          number of eligible warps, avoid possible load imbalances due to highly different execution durations per
+          warp. Reducing stalls indicated on the Warp State Statistics and Source Counters sections can help, too.
+
+    Section: Warp State Statistics
+    ------------------------------------------------------------------ ----------- ------------
+    Metric Name                                                        Metric Unit Metric Value
+    ------------------------------------------------------------------ ----------- ------------
+    smsp__warpidsamp_warps_issue_stalled_barrier_not_issued                   warp            0
+    smsp__warpidsamp_warps_issue_stalled_branch_resolving_not_issued      branches            2
+    smsp__warpidsamp_warps_issue_stalled_dispatch_stall_not_issued            warp           20
+    smsp__warpidsamp_warps_issue_stalled_drain_not_issued                     warp            8
+    smsp__warpidsamp_warps_issue_stalled_lg_throttle_not_issued               warp          466
+    smsp__warpidsamp_warps_issue_stalled_long_scoreboard_not_issued           warp         1396
+    smsp__warpidsamp_warps_issue_stalled_math_pipe_throttle_not_issued        warp            7
+    smsp__warpidsamp_warps_issue_stalled_membar_not_issued                    warp            0
+    smsp__warpidsamp_warps_issue_stalled_mio_throttle_not_issued              warp            3
+    smsp__warpidsamp_warps_issue_stalled_misc_not_issued                      warp            0
+    smsp__warpidsamp_warps_issue_stalled_no_instructions_not_issued           warp            3
+    smsp__warpidsamp_warps_issue_stalled_not_selected_not_issued              warp           14
+    smsp__warpidsamp_warps_issue_stalled_selected_not_issued                  warp            0
+    smsp__warpidsamp_warps_issue_stalled_short_scoreboard_not_issued          warp           20
+    smsp__warpidsamp_warps_issue_stalled_sleeping_not_issued                  warp            0
+    smsp__warpidsamp_warps_issue_stalled_tex_throttle_not_issued              warp            0
+    smsp__warpidsamp_warps_issue_stalled_wait_not_issued                      warp           97
+    Warp Cycles Per Issued Instruction                                       cycle        37.87
+    Warp Cycles Per Executed Instruction                                     cycle        37.87
+    Issued Warp Per Scheduler                                                              0.26
+    Avg. Active Threads Per Warp                                                             32
+    Avg. Not Predicated Off Threads Per Warp                                              31.90
+    ------------------------------------------------------------------ ----------- ------------
+
+    Table Name : Warp State (All Cycles)
+    ------------------------ ----------- ------------
+    Metric Name              Metric Unit Metric Value
+    ------------------------ ----------- ------------
+    Stall Long Scoreboard           inst        22.04
+    Stall LG Throttle               inst         9.54
+    Stall Not Selected              inst         2.17
+    Stall Wait                      inst         1.72
+    Selected                        inst            1
+    Stall Dispatch Stall            inst         0.35
+    Stall No Instruction            inst         0.21
+    Stall MIO Throttle              inst         0.20
+    Stall Short Scoreboard          inst         0.19
+    Stall Math Pipe Throttle        inst         0.12
+    Stall Branch Resolving          inst         0.08
+    Stall Drain                     inst         0.03
+    Stall Barrier                   inst            0
+    Stall Membar                    inst            0
+    Stall Misc                      inst            0
+    Stall Sleeping                  inst            0
+    Stall Tex Throttle              inst            0
+    ------------------------ ----------- ------------
+
+    Table Name : Warp State (Not-issued Samples)
+    Table Description : Aggregated warp stall samples for when the warp scheduler issued no instruction, per SMSP ID:Warp Slot ID combination. Each SM has four SM sub-partitions (SMSPs). A sub partition has a fixed number of warp slots to which the scheduler assigns warps. Right-click the header to filter the stall reasons.
+    ------------------------------------------------------------------ ----------- ------------
+    Metric Name                                                        Metric Unit Metric Value
+    ------------------------------------------------------------------ ----------- ------------
+    smsp__warpidsamp_warps_issue_stalled_long_scoreboard_not_issued           warp         1396
+    smsp__warpidsamp_warps_issue_stalled_lg_throttle_not_issued               warp          466
+    smsp__warpidsamp_warps_issue_stalled_wait_not_issued                      warp           97
+    smsp__warpidsamp_warps_issue_stalled_dispatch_stall_not_issued            warp           20
+    smsp__warpidsamp_warps_issue_stalled_short_scoreboard_not_issued          warp           20
+    smsp__warpidsamp_warps_issue_stalled_not_selected_not_issued              warp           14
+    smsp__warpidsamp_warps_issue_stalled_drain_not_issued                     warp            8
+    smsp__warpidsamp_warps_issue_stalled_math_pipe_throttle_not_issued        warp            7
+    smsp__warpidsamp_warps_issue_stalled_mio_throttle_not_issued              warp            3
+    smsp__warpidsamp_warps_issue_stalled_no_instructions_not_issued           warp            3
+    smsp__warpidsamp_warps_issue_stalled_branch_resolving_not_issued      branches            2
+    smsp__warpidsamp_warps_issue_stalled_barrier_not_issued                   warp            0
+    smsp__warpidsamp_warps_issue_stalled_membar_not_issued                    warp            0
+    smsp__warpidsamp_warps_issue_stalled_misc_not_issued                      warp            0
+    smsp__warpidsamp_warps_issue_stalled_selected_not_issued                  warp            0
+    smsp__warpidsamp_warps_issue_stalled_sleeping_not_issued                  warp            0
+    smsp__warpidsamp_warps_issue_stalled_tex_throttle_not_issued              warp            0
+    ------------------------------------------------------------------ ----------- ------------
+
+    WRN   The optional metric smsp__pcsamp_sample_count could not be found. Collecting it as an additional metric could
+          enable the rule to provide more guidance.
+    ----- --------------------------------------------------------------------------------------------------------------
+    OPT   Est. Speedup: 58.21%
+          On average, each warp of this workload spends 22.0 cycles being stalled waiting for a scoreboard dependency
+          on a L1TEX (local, global, surface, texture) operation. Find the instruction producing the data being waited
+          upon to identify the culprit. To reduce the number of cycles waiting on L1TEX data accesses verify the
+          memory access patterns are optimal for the target architecture, attempt to increase cache hit rates by
+          increasing data locality (coalescing), or by changing the cache configuration. Consider moving frequently
+          used data to shared memory. This stall type represents about 58.2% of the total average of 37.9 cycles
+          between issuing two instructions.
+    ----- --------------------------------------------------------------------------------------------------------------
+    INF   Check the Warp Stall Sampling (All Samples) table for the top stall locations in your source based on
+          sampling data. The Profiling Guide
+          (https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html#metrics-reference) provides more details
+          on each stall reason.

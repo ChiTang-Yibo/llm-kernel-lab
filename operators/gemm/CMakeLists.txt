@@ -50,6 +50,54 @@ target_compile_options(
 #         gemm_build_config
 # )
 
+
+# ------------------------------------------------------------
+# GEMM V00 - Naive FP32
+# ------------------------------------------------------------
+
+add_library(
+    gemm_v00
+    STATIC
+    cuda/v00_naive.cu
+)
+
+target_link_libraries(
+    gemm_v00
+    PUBLIC
+        gemm_build_config
+)
+
+# ------------------------------------------------------------
+# GEMM V00 Correctness Runner
+# ------------------------------------------------------------
+
+add_executable(
+    gemm_v00_test
+    tests/test_v00.cu
+)
+
+target_include_directories(
+    gemm_v00_test
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/cuda
+)
+
+target_link_libraries(
+    gemm_v00_test
+    PRIVATE
+        gemm_v00
+)
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
+
+add_test(
+    NAME gemm_v00_smoke
+    COMMAND
+        ${Python3_EXECUTABLE}
+        ${CMAKE_CURRENT_SOURCE_DIR}/tests/run_v00_suite.py
+        --runner
+        $<TARGET_FILE:gemm_v00_test>
+        --suite smoke
+)
 # ------------------------------------------------------------
 # 4. GEMM correctness tests
 # ------------------------------------------------------------

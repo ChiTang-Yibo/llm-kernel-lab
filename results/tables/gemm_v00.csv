@@ -1,0 +1,4 @@
+operator,version,shape,dtype,gpu,warmup,samples,iterations_per_sample,median_us,min_us,max_us,gflops,effective_gbps
+"gemm","v00_naive","M=128,N=128,K=128","fp32","NVIDIA GeForce RTX 5070 Laptop GPU",10,30,20,9.119200,8.190400,13.550401,459.942102,21.559786
+"gemm","v00_naive","M=256,N=256,K=256","fp32","NVIDIA GeForce RTX 5070 Laptop GPU",10,30,20,33.284800,32.598400,43.582401,1008.100762,23.627362
+"gemm","v00_naive","M=257,N=255,K=259","fp32","NVIDIA GeForce RTX 5070 Laptop GPU",10,30,20,32.300000,31.521600,36.507201,1050.994740,24.537833
