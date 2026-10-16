@@ -42,11 +42,11 @@ dim3 grid((N + block.x - 1) / block.x,
 The global coordinates are:
 
 $$
-\mathrm{row} = \mathrm{blockIdx.y}\,\mathrm{blockDim.y} + \mathrm{threadIdx.y}
+\mathrm{row} = \mathrm{blockIdx.y}\times\mathrm{blockDim.y} + \mathrm{threadIdx.y}
 $$
 
 $$
-\mathrm{col} = \mathrm{blockIdx.x}\,\mathrm{blockDim.x} + \mathrm{threadIdx.x}
+\mathrm{col} = \mathrm{blockIdx.x}\times\mathrm{blockDim.x} + \mathrm{threadIdx.x}
 $$
 
 CUDA `x` maps to the **output column**, and CUDA `y` maps to the **output row**. Out-of-range threads do no work. Threads compute distinct output elements and do not need inter-thread synchronization in this baseline.

@@ -117,7 +117,17 @@ to improve performance, with documented evidence.
 
 ## Project Status
 
-Infrastructure initialization in progress.
+**Active Development — GEMM V00 Completed**
 
-No kernel benchmark results are published yet.
-Performance results will be added after validation.
+The first FP32 CUDA GEMM baseline has been implemented,
+correctness-validated, benchmarked, and profiled.
+
+- Correctness: 7/7 tests passed.
+- CTest: 2/2 passed.
+- Benchmark: CUDA Events measurements completed.
+- Profiling: Nsight Compute Basic and Detailed reports collected.
+
+See the [GEMM project](operators/gemm/README.md)
+and the [V00 technical report](operators/gemm/notes/GEMM_V00_Naive_FP32.md).
+
+Next milestone: GEMM V01 — Thread Mapping and Memory Access.
